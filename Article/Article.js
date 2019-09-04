@@ -135,6 +135,7 @@ function createArticle (articleData) {
   p1.textContent = articleData.firstParagraph;
   p2.textContent = articleData.secondParagraph;
   p3.textContent = articleData.thirdParagraph;
+  span.textContent = 'Expand';
   // Add classes
   date.classList.add('date');
   span.classList.add('expandButton');
