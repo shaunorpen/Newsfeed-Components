@@ -158,3 +158,5 @@ function createArticle (articleData) {
 const articles = data.map(createArticle);
 
 articles.forEach(article => document.querySelector('.articles').appendChild(article));
+
+TweenMax.to('.article', 3, {opacity:1});
