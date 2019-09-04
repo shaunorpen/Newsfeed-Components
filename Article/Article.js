@@ -137,6 +137,7 @@ function createArticle (articleData) {
   p3.textContent = articleData.thirdParagraph;
   span.textContent = 'Expand';
   // Add classes
+  article.classList.add('article');
   date.classList.add('date');
   span.classList.add('expandButton');
   // Add event listener to span, toggle "article-open" on the div
