@@ -131,6 +131,10 @@ function createArticle (articleData) {
   // Add classes
   date.classList.add('date');
   span.classList.add('expandButton');
+  // Add event listener to span, toggle "article-open" on the div
+  span.addEventListener('click', () => {
+    return article.classList.toggle('article-open');
+  })
   // Append to parent div
   article.appendChild(title);
   article.appendChild(date);
