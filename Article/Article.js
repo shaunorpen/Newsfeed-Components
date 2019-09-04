@@ -129,6 +129,7 @@ function createArticle (articleData) {
   const p2 = document.createElement('p');
   const p3 = document.createElement('p');
   const span = document.createElement('span');
+  const closeBtn = document.createElement('span');
   // Add text content
   title.textContent = articleData.title;
   date.textContent = articleData.date;
@@ -136,14 +137,20 @@ function createArticle (articleData) {
   p2.textContent = articleData.secondParagraph;
   p3.textContent = articleData.thirdParagraph;
   span.textContent = 'Expand';
+  closeBtn.textContent = 'Mark as read';
   // Add classes
   article.classList.add('article');
   date.classList.add('date');
   span.classList.add('expandButton');
+  closeBtn.classList.add('close');
   // Add event listener to span, toggle "article-open" on the div
   span.addEventListener('click', () => {
     return article.classList.toggle('article-open');
   })
+  // Add event listener to close, toggle article display property: none
+  closeBtn.addEventListener('click', () => {
+    return article.style.display = 'none';
+  });
   // Append to parent div
   article.appendChild(title);
   article.appendChild(date);
@@ -151,6 +158,7 @@ function createArticle (articleData) {
   article.appendChild(p2);
   article.appendChild(p3);
   article.appendChild(span);
+  article.appendChild(closeBtn);
   // Return
   return article;
 }
