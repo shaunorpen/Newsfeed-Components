@@ -145,3 +145,5 @@ function createArticle (articleData) {
   // Return
   return article;
 }
+
+const articles = data.map(createArticle);
