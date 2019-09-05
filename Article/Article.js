@@ -85,6 +85,13 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'My new article',
+    date: 'Jan 1st, 2019',
+    firstParagraph: 'First para',
+    secondParagraph: 'Second para',
+    thirdParagraph: 'Third para'
   }
 ];
 
@@ -112,3 +119,52 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function createArticle (articleData) {
+  // Create elements
+  const article = document.createElement('div');
+  const title = document.createElement('h2');
+  const date = document.createElement('p');
+  const p1 = document.createElement('p');
+  const p2 = document.createElement('p');
+  const p3 = document.createElement('p');
+  const span = document.createElement('span');
+  const closeBtn = document.createElement('span');
+  // Add text content
+  title.textContent = articleData.title;
+  date.textContent = articleData.date;
+  p1.textContent = articleData.firstParagraph;
+  p2.textContent = articleData.secondParagraph;
+  p3.textContent = articleData.thirdParagraph;
+  span.textContent = 'Expand';
+  closeBtn.textContent = 'Mark as read';
+  // Add classes
+  article.classList.add('article');
+  date.classList.add('date');
+  span.classList.add('expandButton');
+  closeBtn.classList.add('close');
+  // Add event listener to span, toggle "article-open" on the div
+  span.addEventListener('click', () => {
+    return article.classList.toggle('article-open');
+  })
+  // Add event listener to close, toggle article display property: none
+  closeBtn.addEventListener('click', () => {
+    return article.style.display = 'none';
+  });
+  // Append to parent div
+  article.appendChild(title);
+  article.appendChild(date);
+  article.appendChild(p1);
+  article.appendChild(p2);
+  article.appendChild(p3);
+  article.appendChild(span);
+  article.appendChild(closeBtn);
+  // Return
+  return article;
+}
+
+const articles = data.map(createArticle);
+
+articles.forEach(article => document.querySelector('.articles').appendChild(article));
+
+TweenMax.to('.article', 3, {opacity:1});
